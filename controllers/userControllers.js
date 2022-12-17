@@ -1,4 +1,4 @@
-// LOGIC, BL
+
 const User = require("../models/userModel");
 
 exports.home = (req, res) => {
@@ -8,7 +8,7 @@ exports.home = (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const { name, email } = req.body;
-    // To check all the details
+   
     if (!name || !email) {
       throw new Error("Name and Email are Required");
     }
@@ -16,7 +16,7 @@ exports.createUser = async (req, res) => {
     if (userExits) {
       throw new Error("Email Already Exists");
     }
-    // Inserting into the Database
+   
 
     const user = await User.create({ name, email });
     res.status(201).json({
@@ -63,7 +63,7 @@ exports.editUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   try {
-    const user = await User.findByIdAndDelete(req.params.id, req.body);
+    const user = await User.findByIdAndDelete(req.params.id);
     res.status(200).json({
       success: true,
       message: "User updated Successfully",
