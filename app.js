@@ -9,6 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 connectToDB();
-app.get("/", userRoutes);
+app.use("/", userRoutes);
 
 module.exports = app;
